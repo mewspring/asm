@@ -2,8 +2,10 @@ asm
 ===
 
 The aim of this project is to create a specification of the Assembly language
-using EBNF. Based on this specification a lexer and a parser will be developed
-along with an assembler and a disassembler.
+using [EBNF][]. Based on this specification a lexer and a parser will be
+developed along with an assembler and a disassembler.
+
+[EBNF]: https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form
 
 public domain
 -------------
