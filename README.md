@@ -1,7 +1,7 @@
 asm
 ===
 
-The aim of this project is to create a specification of the Assembly language
+The aim of this project is to create a specification of the assembly language
 using [EBNF][]. Based on this specification a lexer and a parser will be
 developed along with an assembler and a disassembler.
 
