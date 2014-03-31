@@ -1,0 +1,113 @@
+// The content and structure of this document is heavily influenced by the Go
+// Programming Language Specification [1] and some parts are therefore governed
+// by a BSD-style license [2]. Any original content is hereby released into the
+// public domain [3].
+//
+// [1]: http://golang.org/ref/spec
+// [2]: http://golang.org/LICENSE
+// [3]: https://creativecommons.org/publicdomain/zero/1.0/
+
+// === [ Source code representation ] ==========================================
+
+// --- [ Characters ] ----------------------------------------------------------
+
+newline        = /* the Unicode code point U+000A */ .
+unicode_char   = /* an arbitrary Unicode code point except newline */ .
+unicode_letter = /* a Unicode code point classified as "Letter" */ .
+unicode_digit  = /* a Unicode code point classified as "Decimal Digit" */ .
+ascii_char     = /* an arbitrary ASCII character except newline */ .
+
+// --- [ Letters and digits ] --------------------------------------------------
+
+letter        = unicode_letter | "_" .
+decimal_digit = "0" … "9" .
+octal_digit   = "0" … "7" .
+hex_digit     = "0" … "9" | "A" … "F" | "a" … "f" .
+
+// === [ Lexical elements ] ====================================================
+
+// --- [ Comments ] ------------------------------------------------------------
+
+// A line comment acts like a newline.
+line_comment = ";" { unicode_char } newline .
+
+// --- [ Identifiers ] ---------------------------------------------------------
+
+identifier = letter { letter | unicode_digit } .
+
+// --- [ Integer literals ] ----------------------------------------------------
+
+int_lit     = decimal_lit | octal_lit | hex_lit .
+decimal_lit = ( "1" … "9" ) { decimal_digit } .
+octal_lit   = "0" { octal_digit } .
+hex_lit     = "0" ( "x" | "X" ) hex_digit { hex_digit } .
+
+// --- [ Character literals ] --------------------------------------------------
+
+// A character literal is expressed as one or more characters enclosed in single
+// quotes. Within the quotes, any character may appear except single quote and
+// newline. A single quoted character represents the ASCII value of the
+// character itself, while multi-character sequences beginning with a backslash
+// encode values in various formats.
+//
+// Several backslash escapes allow arbitrary values to be encoded as ASCII text.
+// Although these representations all result in an integer, they have different
+// valid ranges. Octal escapes must represent a value between 0 and 255
+// inclusive.
+//
+// After a backslash, certain single-character escapes represent special values:
+//
+//    \a   U+0007 alert or bell
+//    \b   U+0008 backspace
+//    \f   U+000C form feed
+//    \n   U+000A line feed or newline
+//    \r   U+000D carriage return
+//    \t   U+0009 horizontal tab
+//    \v   U+000b vertical tab
+//    \\   U+005c backslash
+//    \'   U+0027 single quote  (valid escape only within character literals)
+//    \"   U+0022 double quote  (valid escape only within string literals)
+//
+// All other sequences starting with a backslash are illegal inside character
+// literals.
+
+char_lit         = "'" ( ascii_value | byte_value ) "'" .
+ascii_value      = ascii_char | escaped_char .
+byte_value       = octal_byte_value | hex_byte_value .
+octal_byte_value = `\` octal_digit octal_digit octal_digit .
+hex_byte_value   = `\` "x" hex_digit hex_digit .
+escaped_char     = `\` ( "a" | "b" | "f" | "n" | "r" | "t" | "v" | `\` | "'" | `"` ) .
+
+// --- [ String literals ] -----------------------------------------------------
+
+// === [ Source code structure ] ===============================================
+
+Program = { Line } .
+Line    = [ Statement | Directive ] [ line_comment ] .
+
+// === [ Statements ] ==========================================================
+
+Statement = [ LabelDecl ] [ Instruction ] .
+
+// --- [ Label declaration ] ---------------------------------------------------
+
+LabelDecl  = Label ":" .
+Label      = identifier | LocalLabel .
+LocalLabel = "." identifer .
+
+// === [ Instructions ] ========================================================
+
+// The definitions of OpCode and Register are architecture specific.
+Instruction = OpCode { Operand } .
+Operand     = Register | Label | Immediate .
+
+// === [ Directives ] ==========================================================
+
+// TODO(u): Write directive specifications.
+//    section ".text"
+//    align 0x80
+Directive = .
+
+// == [ Immediate values ] =====================================================
+
+Immediate = int_lit | char_lit | string_lit .
