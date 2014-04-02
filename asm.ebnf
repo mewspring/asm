@@ -83,23 +83,26 @@ escaped_char     = `\` ( "a" | "b" | "f" | "n" | "r" | "t" | "v" | `\` | "'" | `
 // === [ Source code structure ] ===============================================
 
 Program = { Line } .
-Line    = [ Statement | Directive ] [ line_comment ] .
-
-// === [ Statements ] ==========================================================
-
-Statement = [ LabelDecl ] [ Instruction ] .
+Line    = [ LabelDecl ] [ Instruction | Directive ] [ line_comment ] .
 
 // --- [ Label declaration ] ---------------------------------------------------
 
-LabelDecl  = Label ":" .
-Label      = identifier | LocalLabel .
-LocalLabel = "." identifer .
+LabelDecl = Label ":" .
+
+// Local labels starts with a ".".
+Label     = [ "." ] identifier .
 
 // === [ Instructions ] ========================================================
 
-// The definitions of OpCode and Register are architecture specific.
-Instruction = OpCode { Operand } .
+// The definitions of Operator and Register are architecture specific.
+Instruction = Operator [ Operand { "," Operand } ] .
 Operand     = Register | Label | Immediate .
+
+// The precise definition of an Operator is architecture specific.
+Operator = identifier .
+
+// The precise definition of a Register is architecture specific.
+Register = [ "$" ] identifier .
 
 // === [ Directives ] ==========================================================
 
