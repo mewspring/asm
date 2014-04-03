@@ -20,8 +20,9 @@ ascii_char     = /* an arbitrary ASCII character except newline */ .
 // --- [ Letters and digits ] --------------------------------------------------
 
 letter        = unicode_letter | "_" .
-decimal_digit = "0" … "9" .
+binary_digit  = "0" … "1" .
 octal_digit   = "0" … "7" .
+decimal_digit = "0" … "9" .
 hex_digit     = "0" … "9" | "A" … "F" | "a" … "f" .
 
 // === [ Lexical elements ] ====================================================
@@ -37,9 +38,10 @@ identifier = letter { letter | unicode_digit } .
 
 // --- [ Integer literals ] ----------------------------------------------------
 
-int_lit     = decimal_lit | octal_lit | hex_lit .
-decimal_lit = ( "1" … "9" ) { decimal_digit } .
+int_lit     = [ "+" | "-" ] binary_lit | octal_lit | decimal_lit | hex_lit .
+binary_lit  = "0b" binary_digit { binary_digit } .
 octal_lit   = "0" { octal_digit } .
+decimal_lit = ( "1" … "9" ) { decimal_digit } .
 hex_lit     = "0" ( "x" | "X" ) hex_digit { hex_digit } .
 
 // --- [ Character literals ] --------------------------------------------------
@@ -90,7 +92,7 @@ Line    = [ LabelDecl ] [ Instruction | Directive ] [ line_comment ] .
 LabelDecl = Label ":" .
 
 // Local labels starts with a ".".
-Label     = [ "." ] identifier .
+Label = [ "." ] identifier .
 
 // === [ Instructions ] ========================================================
 
