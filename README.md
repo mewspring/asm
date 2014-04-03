@@ -7,6 +7,18 @@ developed along with an assembler and a disassembler.
 
 [EBNF]: https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form
 
+Documentation
+-------------
+
+Documentation provided by GoDoc.
+
+- [lexer][]: implements tokenization of assembly source text.
+- [token][]: defines constants representing the lexical tokens of the assembly
+language.
+
+[lexer]: http://godoc.org/github.com/mewmew/asm/lexer
+[token]: http://godoc.org/github.com/mewmew/asm/token
+
 public domain
 -------------
 
