@@ -24,11 +24,13 @@ Examples
 
 ### tokens
 
-The [tokens][examples/tokens] command demonstrates how to tokenize input files.
+The [tokens][examples/tokens] command demonstrates how to tokenize input files
+using the [Parse][lexer.Parse] function.
 
 	go get github.com/mewmew/asm/examples/tokens
 
 [examples/tokens]: https://github.com/mewmew/asm/blob/master/examples/tokens/tokens.go#L23
+[lexer.Parse]: http://godoc.org/github.com/mewmew/asm/lexer#example-Parse
 
 public domain
 -------------
