@@ -112,7 +112,7 @@ func lexIntLit(l *lexer) stateFn {
 	default:
 		return l.errorf("lexer.lexIntLit: expected decimal digit, got %c", r)
 	}
-	if !l.accept(digits) && !hasIntLit {
+	if !l.acceptRun(digits) && !hasIntLit {
 		return l.errorf("lexer.lexIntLit: missing digits in integer literal")
 	}
 	l.emit(token.Int)
