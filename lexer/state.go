@@ -86,7 +86,7 @@ func lexIntLit(l *lexer) stateFn {
 
 	// Decimal digits.
 	digits := "0123456789"
-	isZero := false
+	hasIntLit := false
 	r := l.next()
 	switch {
 	case r == eof:
@@ -102,12 +102,17 @@ func lexIntLit(l *lexer) stateFn {
 		default:
 			// Octal digits.
 			digits = "01234567"
-			isZero = true
+
+			// The octal literal '0' has been consumed.
+			hasIntLit = true
 		}
-	case r < '1' || r > '9':
-		return l.errorf("lexer.lexIntLit: expected decimal digit, got '%c", r)
+	case r >= '1' && r <= '9':
+		// A decimal literal '1' … '9' has been consumed.
+		hasIntLit = true
+	default:
+		return l.errorf("lexer.lexIntLit: expected decimal digit, got %c", r)
 	}
-	if !l.acceptRun(digits) && !isZero {
+	if !l.accept(digits) && !hasIntLit {
 		return l.errorf("lexer.lexIntLit: missing digits in integer literal")
 	}
 	l.emit(token.Int)
