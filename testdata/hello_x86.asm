@@ -4,11 +4,11 @@ section ".text"
 global _start
 
 _start:
-	; write(1, "Hello world\n", 12)
+	; write(1, "Hello world!\n", 13)
 	mov	eax, 4		; sys_write
 	mov	ebx, 1		;    fd: stdout
 	mov	ecx, hello	;    buf: str
-	mov	edx, 12		;    len: len(str)
+	mov	edx, 13		;    len: len(str)
 	int	0x80		; syscall
 
 	; exit(0)
