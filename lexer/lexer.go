@@ -11,7 +11,7 @@
 // [3]: http://golang.org/LICENSE
 // [4]: https://creativecommons.org/publicdomain/zero/1.0/
 
-// Package lexer implements tokenization of assembly source text.
+// Package lexer implements tokenization of assembly source code.
 package lexer
 
 import (
