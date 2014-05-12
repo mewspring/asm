@@ -38,6 +38,8 @@ identifier = letter { letter | unicode_digit } .
 
 // --- [ Integer literals ] ----------------------------------------------------
 
+// TODO(u): Add support for floating point literals.
+
 int_lit     = [ "+" | "-" ] binary_lit | octal_lit | decimal_lit | hex_lit .
 binary_lit  = "0b" binary_digit { binary_digit } .
 octal_lit   = "0" { octal_digit } .
@@ -101,6 +103,8 @@ LabelDecl = Label ":" .
 Label = [ "." ] identifier .
 
 // === [ Instructions ] ========================================================
+
+// TODO(u): Add support for expressions.
 
 // The definitions of Operator and Register are architecture specific.
 Instruction = Operator [ Operand { "," Operand } ] .

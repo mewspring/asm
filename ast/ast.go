@@ -1,6 +1,13 @@
+// TODO(u): Add support for expressions. Update the comment of Node to reflect
+// this addition.
+
 // Package ast declares the types used to represent abstract syntax trees of
 // assembly source code.
 package ast
+
+// Node represent an instruction, a directive or an argument of the abstract
+// syntax tree.
+type Node interface{}
 
 // Inst represent an instruction which consists of an operation (opcode) and
 // zero or more operands (arguments). Some instructions are not implemented in
