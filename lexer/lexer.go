@@ -144,6 +144,12 @@ func isLetterOrDigit(r rune) bool {
 	return isLetter(r) || unicode.IsDigit(r)
 }
 
+// isDigit returns true if r is an ASCII digit from '0' through '9', and false
+// otherwise.
+func isDigit(r rune) bool {
+	return '0' <= r && r <= '9'
+}
+
 // isSpace returns true if r is a whitespace character, and false otherwise.
 func isSpace(r rune) bool {
 	// whitespace characters, except newline.

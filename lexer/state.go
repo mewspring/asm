@@ -32,7 +32,33 @@ func lexLine(l *lexer) stateFn {
 		case r == ':':
 			// Lex label declaration colon.
 			return lexColon
-		case r == '+' || r == '-' || r >= '0' && r <= '9':
+		case r == '+':
+			if isDigit(l.peek()) {
+				return lexIntLit
+			}
+			return lexAddOp
+		case r == '-':
+			if isDigit(l.peek()) {
+				return lexIntLit
+			}
+			return lexSubOp
+		case r == '*':
+			return lexMulOp
+		case r == '/':
+			return lexDivOp
+		case r == '%':
+			return lexModOp
+		case r == '&':
+			return lexAndOp
+		case r == '|':
+			return lexOrOp
+		case r == '^':
+			return lexXorOp
+		case r == '<':
+			return lexLshOp
+		case r == '>':
+			return lexRshOp
+		case isDigit(r):
 			// Lex integer literal.
 			l.backup()
 			return lexIntLit
@@ -269,4 +295,44 @@ func lexLineComment(l *lexer) stateFn {
 func lexNewline(l *lexer) stateFn {
 	l.emit(token.Newline)
 	return lexLine
+}
+
+func lexAddOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexSubOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexMulOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexDivOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexModOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexAndOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexOrOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexXorOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexLshOp(l *lexer) stateFn {
+	panic("not yet implemented.")
+}
+
+func lexRshOp(l *lexer) stateFn {
+	panic("not yet implemented.")
 }
