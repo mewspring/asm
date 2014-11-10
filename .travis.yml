@@ -8,12 +8,12 @@ env:
     - secure: "jBsIkCGT1ulgSfYtAWVIT1oBmXGPmUsW8OgqZo+H6qDX5HJopfn0rVzzJFQZoqZwYhYF7kB+7khHXtMrPGezDUUSjoVwluN9VbK6vbAsu89h6SsMGadlyzZisbcjkIcaNwQU5oyzg0VyMc41DO1rXYO91FncAs02KOp0yslIugk="
     - PATH=$HOME/gopath/bin:$PATH
 
-# TODO(u): Update import path of vet when Travis starts using Go 1.4.
+# TODO(u): Update import path of vet and cover when Travis starts using Go 1.4.
 
 before_install:
-  - go get golang.org/x/tools/cmd/cover
-  - go get golang.org/x/tools/cmd/goimports
+  - go get code.google.com/p/go.tools/cmd/cover
   - go get code.google.com/p/go.tools/cmd/vet
+  - go get golang.org/x/tools/cmd/goimports
   - go get github.com/golang/lint/golint
   - go get github.com/mattn/goveralls
 
