@@ -26,8 +26,8 @@ Documentation provided by GoDoc.
 - [token][]: defines constants representing the lexical tokens of the assembly
 language.
 
-[lexer]: http://godoc.org/github.com/mewmew/asm/lexer
-[token]: http://godoc.org/github.com/mewmew/asm/token
+[lexer]: http://godoc.org/github.com/mewlang/asm/lexer
+[token]: http://godoc.org/github.com/mewlang/asm/token
 
 Examples
 --------
@@ -37,10 +37,10 @@ Examples
 The [tokens][examples/tokens] command demonstrates how to tokenize input files
 using the [Parse][lexer.Parse] function.
 
-	go get github.com/mewmew/asm/examples/tokens
+	go get github.com/mewlang/asm/examples/tokens
 
-[examples/tokens]: https://github.com/mewmew/asm/blob/master/examples/tokens/tokens.go#L23
-[lexer.Parse]: http://godoc.org/github.com/mewmew/asm/lexer#example-Parse
+[examples/tokens]: https://github.com/mewlang/asm/blob/master/examples/tokens/tokens.go#L23
+[lexer.Parse]: http://godoc.org/github.com/mewlang/asm/lexer#example-Parse
 
 public domain
 -------------
