@@ -1,4 +1,5 @@
-// tokens demonstrates how to tokenize input files using the Parse function.
+// tokens is a tool which demonstrates how to tokenize input files using the
+// Parse function.
 package main
 
 import (
