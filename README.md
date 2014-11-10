@@ -7,6 +7,10 @@ subject to change. The documentation may be inaccurate.
 asm
 ===
 
+[![Build Status](https://travis-ci.org/USER/REPO.svg?branch=master)](https://travis-ci.org/mewlang/asm)
+[![Coverage Status](https://img.shields.io/coveralls/mewlang/asm.svg)](https://coveralls.io/r/mewlang/asm?branch=master)
+[![GoDoc](https://godoc.org/github.com/mewlang/asm?status.svg)](https://godoc.org/github.com/mewlang/asm)
+
 The aim of this project is to create a specification of the assembly language
 using [EBNF][]. Based on this specification a lexer and a parser will be
 developed along with an assembler and a disassembler.
