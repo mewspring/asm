@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/mewmew/asm/lexer"
+	"github.com/mewlang/asm/lexer"
 )
 
 func main() {

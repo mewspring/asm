@@ -21,7 +21,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/mewmew/asm/token"
+	"github.com/mewlang/asm/token"
 )
 
 const (

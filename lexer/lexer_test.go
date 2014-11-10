@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/mewmew/asm/token"
+	"github.com/mewlang/asm/token"
 )
 
 type test struct {

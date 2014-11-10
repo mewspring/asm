@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/mewmew/asm/token"
+	"github.com/mewlang/asm/token"
 )
 
 // A stateFn represents the state of the scanner as a function that returns a

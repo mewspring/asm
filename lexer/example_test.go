@@ -3,7 +3,7 @@ package lexer_test
 import (
 	"fmt"
 
-	"github.com/mewmew/asm/lexer"
+	"github.com/mewlang/asm/lexer"
 )
 
 func ExampleParse() {
