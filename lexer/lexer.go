@@ -16,7 +16,6 @@ package lexer
 
 import (
 	"fmt"
-	"log"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -80,10 +79,10 @@ func (l *lexer) errorf(format string, args ...interface{}) stateFn {
 // function.
 func (l *lexer) emitEOF() stateFn {
 	if l.pos < len(l.input) {
-		log.Fatalf("lexer.emitEOF: unexpected eof; pos %d < len(input) %d.\n", l.pos, len(l.input))
+		panic(fmt.Sprintf("lexer.emitEOF: unexpected eof; pos %d < len(input) %d.\n", l.pos, len(l.input)))
 	}
 	if l.start != l.pos {
-		log.Fatalf("lexer.emitEOF: invalid eof; pending input %q not handled.\n", l.input[l.start:])
+		panic(fmt.Sprintf("lexer.emitEOF: invalid eof; pending input %q not handled.\n", l.input[l.start:]))
 	}
 	l.emit(token.EOF)
 	return nil
@@ -126,7 +125,7 @@ func (l *lexer) peek() (r rune) {
 func (l *lexer) backup() {
 	if l.width == 0 {
 		// TODO(u): Handle eof elsewhere so we never hit this case.
-		log.Fatalln("lexer.backup: invalid width; no matching call to next.")
+		panic("lexer.backup: invalid width; no matching call to next.")
 	}
 	l.pos -= l.width
 	l.width = 0
