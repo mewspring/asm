@@ -7,7 +7,7 @@ subject to change. The documentation may be inaccurate.
 asm
 ===
 
-[![Build Status](https://travis-ci.org/USER/REPO.svg?branch=master)](https://travis-ci.org/mewlang/asm)
+[![Build Status](https://travis-ci.org/mewlang/asm.svg?branch=master)](https://travis-ci.org/mewlang/asm)
 [![Coverage Status](https://img.shields.io/coveralls/mewlang/asm.svg)](https://coveralls.io/r/mewlang/asm?branch=master)
 [![GoDoc](https://godoc.org/github.com/mewlang/asm?status.svg)](https://godoc.org/github.com/mewlang/asm)
 
