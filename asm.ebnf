@@ -1,7 +1,7 @@
 // The content and structure of this document is heavily influenced by the Go
 // Programming Language Specification [1] and some parts are therefore governed
-// by a BSD-style license [2]. Any original content is hereby released into the
-// public domain [3].
+// by a BSD-style license [2]. Any original content of this document is hereby
+// released into the public domain [3].
 //
 // [1]: http://golang.org/ref/spec
 // [2]: http://golang.org/LICENSE
